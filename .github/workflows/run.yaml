@@ -37,4 +37,5 @@ jobs:
       - name: Combine reports (corrected)
         run: |  # Multi-line command for combining reports
           cat report.md report1.md > combined_file.md  # Corrected file name
+          cml comment create combined_file.md
 
