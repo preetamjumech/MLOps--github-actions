@@ -24,14 +24,14 @@ jobs:
 
       - name: Generate model score report
         run: |  # Multi-line command for generating report
-          echo "RF and LR Model Score" > report.md
+          echo # RF and LR Model Score" > report.md
           cat scores.txt >> report.md  # Append report data
 
       - name: Generate model analysis report (corrected)
         run: |  # Multi-line command for generating analysis report
-          echo "Confusion Matrix and Feature Importance" > report1.md
-          echo '|[Image of ConfusionMatrix.png](./ConfusionMatrix.png "ConfusionMatrix")' >> report1.md  # Corrected image reference
-          echo '|[Image of FeatureImportance.png]./(FeatureImportance.png "FeatureImportance")' >> report1.md  # Corrected image reference
+          echo "# Confusion Matrix and Feature Importance" > report1.md
+          echo '|[Image of ConfusionMatrix.png](ConfusionMatrix.png "ConfusionMatrix")' >> report1.md  # Corrected image reference
+          echo '|[Image of FeatureImportance.png](FeatureImportance.png "FeatureImportance")' >> report1.md  # Corrected image reference
 
 
       - name: Combine reports (corrected)
