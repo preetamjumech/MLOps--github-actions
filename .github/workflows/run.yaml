@@ -14,10 +14,10 @@ jobs:
     steps:
       - uses: iterative/setup-cml@v2  # Set up CML environment (assuming this action exists)
       - uses: actions/checkout@v3  # Checkout the code from the repository
-
       - name: Train mode
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Access secrets securely
+      
         run: |  # Multi-line command using heredoc syntax
           pip install -r requirements.txt
           python train_model.py
