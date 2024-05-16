@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v3  # Checkout the code from the repository
       - name: Train mode
         env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Access secrets securely
+          REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # Access secrets securely
       
         run: |  # Multi-line command using heredoc syntax
           pip install -r requirements.txt
