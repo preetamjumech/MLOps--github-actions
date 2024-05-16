@@ -13,10 +13,10 @@ feature_check = all(dataset.columns.isin(cols))
 feature_check
 
 #Length Check
-sepal_length_test = dataset['sepal length (cm)'].between(4,7).all()
-sepal_width_test = dataset['sepal width (cm)'].between(2,5).all()
-petal_length_test = dataset['petal length (cm)'].between(1,6).all()
-petal_width_test = dataset['petal width (cm)'].between(0,3).all()
+sepal_length_test = dataset['sepal length (Cm)'].between(4,7).all()
+sepal_width_test = dataset['sepal width (Cm)'].between(2,5).all()
+petal_length_test = dataset['petal length (Cm)'].between(1,6).all()
+petal_width_test = dataset['petal width (Cm)'].between(0,3).all()
 
 feature_check = ["Passed &#9989;" if feature_check else "Failed &#10540;"]
 sepal_length_test = ["Passed &#9989;" if sepal_length_test else "Failed &#10540;"]
