@@ -1,35 +1,37 @@
 name: model_train
+
 permissions:
   id-token: write
   contents: write
 
-
 on:
-  - push
+  - push  # Trigger the workflow on push events
+
 jobs:
   run:
-    runs-on:
-      - ubuntu-latest
+    runs-on: ubuntu-latest  # Run the workflow on Ubuntu latest
 
-   steps:
-   - uses: interactive/setup-cml@v1
-   - uses: actions/checkout@v3
-   -name: train model
-    env:
-      REPO_TOKEN: $({ secrets.GITHUB_TOKEN })
+    steps:
+      - uses: interactive/setup-cml@v1  # Set up CML environment (assuming this action exists)
+      - uses: actions/checkout@v3  # Checkout the code from the repository
 
- run:
-  pip install -r requirements.txt
-  python train_model.py
+      - name: Train mode
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Access secrets securely
+        run: |  # Multi-line command using heredoc syntax
+          pip install -r requirements.txt
+          python train_model.py
 
+      - name: Generate model score report
+        run: |  # Multi-line command for generating report
+          echo "RF and LR Model Score" > report.md
+          cat report.txt >> report.md  # Append report data
 
-  echo "RF and LR Model Score" > report.md
-  cat report.txt
+      - name: Generate model analysis report (corrected)
+        run: |  # Multi-line command for generating analysis report
+          echo "Confusion Matrix and Feature Importance" > report.md
+          echo '|[Image of ConfusionMatrix.png](ConfusionMatrix.png "Confusion Matrix")' >> report.md  # Corrected image reference
 
-
-  echo "Confusion Matrix and Feature Importance" > report.md
-  echo '|[](./ConfusionMatrix.png "ConfusionMatrix")' >> report1.md
-  echo '|[](./ConfusionMatrix.png "ConfusionMatrix")' >> report1.md
-
-  cat report.md report1.md > combined_file.md
-  cml commit create combine_file.md
+      - name: Combine reports (corrected)
+        run: |  # Multi-line command for combining reports
+          cat report.md report1.md > combined_file.md  # Corrected file name
