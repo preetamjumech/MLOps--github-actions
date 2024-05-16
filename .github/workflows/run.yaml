@@ -21,10 +21,17 @@ jobs:
         run: |  # Multi-line command using heredoc syntax
           pip install -r requirements.txt
           python train_model.py
+          python testing.py
+
+      - name: Sanity check
+        run: |  # Multi-line command for generating report
+          echo "# Sanity Check" > report2.md
+          cat test.txt >> report2.md  # Append report data
+          
 
       - name: Generate model score report
         run: |  # Multi-line command for generating report
-          echo # RF and LR Model Score" > report.md
+          echo "# RF and LR Model Score" > report.md
           cat scores.txt >> report.md  # Append report data
 
       - name: Generate model analysis report (corrected)
@@ -36,6 +43,6 @@ jobs:
 
       - name: Combine reports (corrected)
         run: |  # Multi-line command for combining reports
-          cat report.md report1.md > combined_file.md  # Corrected file name
+          cat report2.md report.md report1.md > combined_file.md  # Corrected file name
       
 
