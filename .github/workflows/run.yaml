@@ -30,8 +30,11 @@ jobs:
       - name: Generate model analysis report (corrected)
         run: |  # Multi-line command for generating analysis report
           echo "Confusion Matrix and Feature Importance" > report1.md
-          echo '|[Image of ConfusionMatrix.png](ConfusionMatrix.png "Confusion Matrix")' >> report1.md  # Corrected image reference
+          echo '|[](./ConfusionMatrix.png "ConfusionMatrix")' >> report1.md  # Corrected image reference
+          echo '|[]./(FeatureImportance.png "FeatureImportance")' >> report1.md  # Corrected image reference
+
 
       - name: Combine reports (corrected)
         run: |  # Multi-line command for combining reports
           cat report.md report1.md > combined_file.md  # Corrected file name
+          cml comment create combined_file.md
